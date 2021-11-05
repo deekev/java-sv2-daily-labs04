@@ -10,6 +10,6 @@ public class StockMain {
         System.out.println(stock.maxProfit());  //8.17
 
         Stock stock2 = new Stock(Arrays.asList(12.0,2.0,8.0,4.0));
-        System.out.println(stock2.maxProfit()); //6.0
+        System.out.println(stock2.maxProfit()); // 6.0
     }
 }

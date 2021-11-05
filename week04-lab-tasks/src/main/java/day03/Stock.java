@@ -12,20 +12,18 @@ public class Stock {
     }
 
     public double maxProfit() {
-        double minRate = exchangeRate.get(0);
-        int indexOfMinRate = 0;
-        for (int i = 0; i < exchangeRate.size()-1; i++) {
-            if (minRate > exchangeRate.get(i)){
-                minRate = exchangeRate.get(i);
-                indexOfMinRate = i;
+        double maxProfit = 0.0;
+        for(int i = 0; i < exchangeRate.size(); i++){
+            if (exchangeRate.get(i) != null) {
+                for (int j = i + 1; j < exchangeRate.size(); j++) {
+                    if (exchangeRate.get(j) != null && exchangeRate.get(i) < exchangeRate.get(j)) {
+                        if (exchangeRate.get(j) - exchangeRate.get(i) > maxProfit) {
+                            maxProfit = exchangeRate.get(j) - exchangeRate.get(i);
+                        }
+                    }
+                }
             }
         }
-        double maxRate = 0;
-        for (int i = indexOfMinRate; i < exchangeRate.size(); i++){
-            if (maxRate < exchangeRate.get(i)) {
-                maxRate = exchangeRate.get(i);
-            }
-        }
-        return maxRate - minRate;
+        return maxProfit;
     }
 }
