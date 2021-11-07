@@ -14,14 +14,15 @@ public class Stock {
     public double maxProfit() {
         double maxProfit = 0.0;
         for(int i = 0; i < exchangeRate.size(); i++){
-            if (exchangeRate.get(i) != null) {
-                for (int j = i + 1; j < exchangeRate.size(); j++) {
-                    if (exchangeRate.get(j) != null && exchangeRate.get(i) < exchangeRate.get(j)) {
-                        if (exchangeRate.get(j) - exchangeRate.get(i) > maxProfit) {
-                            maxProfit = exchangeRate.get(j) - exchangeRate.get(i);
-                        }
-                    }
-                }
+            maxProfit = checkDailyDifferences(maxProfit, i);
+        }
+        return maxProfit;
+    }
+
+    private double checkDailyDifferences(double maxProfit, int i) {
+        for (int j = i + 1; j < exchangeRate.size(); j++) {
+            if (exchangeRate.get(j) - exchangeRate.get(i) > maxProfit) {
+                maxProfit = exchangeRate.get(j) - exchangeRate.get(i);
             }
         }
         return maxProfit;
